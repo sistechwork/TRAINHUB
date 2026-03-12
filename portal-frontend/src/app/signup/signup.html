@@ -1,0 +1,67 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-header">
+      <div class="logo-container">
+        <img src="assets/images/trainhub_logo.png" alt="TrainHub Logo" class="main-logo">
+      </div>
+      <h1>Join TrainHub</h1>
+      <p>Create your student account to get started</p>
+    </div>
+
+    <div class="message" [ngClass]="message.type" *ngIf="message.text">
+      {{ message.text }}
+    </div>
+
+    <form (submit)="handleSignup()">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name</label>
+          <div class="input-wrapper">
+            <i class="fas fa-user"></i>
+            <input type="text" [(ngModel)]="signupData.name" name="name" required placeholder="John Doe" class="premium-input">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <div class="input-wrapper">
+            <i class="fas fa-envelope"></i>
+            <input type="email" [(ngModel)]="signupData.email" name="email" required placeholder="john@example.com" class="premium-input">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <div class="input-wrapper">
+            <i class="fas fa-phone"></i>
+            <input type="tel" [(ngModel)]="signupData.phone" name="phone" required placeholder="1234567890" class="premium-input">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrapper">
+            <i class="fas fa-lock"></i>
+            <input type="password" [(ngModel)]="signupData.password" name="password" required placeholder="••••••••" class="premium-input">
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label>Confirm Password</label>
+          <div class="input-wrapper">
+            <i class="fas fa-shield-alt"></i>
+            <input type="password" [(ngModel)]="signupData.confirmPassword" name="confirmPassword" required placeholder="••••••••" class="premium-input">
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-premium btn-primary full-width-btn">
+        <i class="fas fa-user-plus"></i> Create Account
+      </button>
+
+      <div class="login-link">
+        Already have an account? <a routerLink="/">Sign in here</a>
+      </div>
+    </form>
+  </div>
+</div>

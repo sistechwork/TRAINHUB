@@ -1,0 +1,73 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo-area">
+      <img src="assets/images/trainhub_logo.png" alt="Logo" class="nav-logo">
+      <span class="brand-name">TrainHub Student</span>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/details" routerLinkActive="active">My Profile</a>
+      <a routerLink="/hrm" routerLinkActive="active">Attendance</a>
+      <a routerLink="/learning" routerLinkActive="active">Learning</a>
+      <a routerLink="/validation" routerLinkActive="active">Assessment</a>
+      <a routerLink="/project" routerLinkActive="active">Projects</a>
+      <a routerLink="/setting" routerLinkActive="active">Settings</a>
+      <button class="btn-premium btn-secondary btn-sm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="student-container">
+  <header class="section-header">
+    <h1>Attendance & Leaves</h1>
+    <p>Track your daily presence and manage leave requests.</p>
+  </header>
+
+  <div class="hrm-grid">
+    <div class="hrm-card premium-card">
+      <div class="card-icon blue"><i class="fas fa-calendar-check"></i></div>
+      <h3>Attendance Overview</h3>
+      <div class="stat-large">93%</div>
+      <div class="stat-sub">Present: 28 | Total: 30</div>
+      <div class="premium-progress">
+        <div class="fill" style="width: 93%"></div>
+      </div>
+      <button class="btn-premium btn-primary full-width-btn">View Monthly Report</button>
+    </div>
+
+    <div class="hrm-card premium-card">
+      <div class="card-icon green"><i class="fas fa-plane-departure"></i></div>
+      <h3>Leave Requests</h3>
+      <div class="stat-list">
+        <div class="stat-item">
+          <span class="lab">Total Taken</span>
+          <span class="val">2 Days</span>
+        </div>
+        <div class="stat-item">
+          <span class="lab">Remaining</span>
+          <span class="val">5 Days</span>
+        </div>
+        <div class="stat-item">
+          <span class="lab">Pending</span>
+          <span class="val">None</span>
+        </div>
+      </div>
+      <button class="btn-premium btn-secondary full-width-btn">Apply for Leave</button>
+    </div>
+
+    <div class="hrm-card premium-card">
+      <div class="card-icon purple"><i class="fas fa-clock"></i></div>
+      <h3>Schedule Tracking</h3>
+      <div class="stat-list">
+        <div class="stat-item">
+          <span class="lab">Working Hours</span>
+          <span class="val">09:00 - 18:00</span>
+        </div>
+        <div class="stat-item">
+          <span class="lab">Current Shift</span>
+          <span class="val">Morning Batch B1</span>
+        </div>
+      </div>
+      <button class="btn-premium btn-secondary full-width-btn">View My Schedule</button>
+    </div>
+  </div>
+</div>

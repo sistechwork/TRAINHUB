@@ -1,0 +1,59 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo-area">
+      <img src="assets/images/trainhub_logo.png" alt="Logo" class="nav-logo">
+      <span class="brand-name">TrainHub Student</span>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/details" routerLinkActive="active">My Profile</a>
+      <a routerLink="/hrm" routerLinkActive="active">Attendance</a>
+      <a routerLink="/learning" routerLinkActive="active">Learning</a>
+      <a routerLink="/validation" routerLinkActive="active">Assessment</a>
+      <a routerLink="/project" routerLinkActive="active">Projects</a>
+      <a routerLink="/setting" routerLinkActive="active">Settings</a>
+      <button class="btn-premium btn-secondary btn-sm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="student-container">
+  <header class="section-header">
+    <h1>Assessment & Validation</h1>
+    <p>Verify your skills through our structured assessment portal.</p>
+  </header>
+
+  <div class="validation-grid">
+    <div class="validation-card premium-card">
+      <div class="card-badge">Skill Test</div>
+      <h3>Python Backend Logic</h3>
+      <p>Evaluate your understanding of Python data structures and algorithms in a production environment.</p>
+      <div class="meta-row">
+        <span><i class="far fa-clock"></i> 45 Mins</span>
+        <span><i class="fas fa-signal"></i> Intermediate</span>
+      </div>
+      <a href="assets/Python_Logic.seb" class="btn-premium btn-primary full-width-btn">Launch Assessment</a>
+    </div>
+
+    <div class="validation-card premium-card">
+      <div class="card-badge gold">Architecture</div>
+      <h3>Angular Fundamentals</h3>
+      <p>Assess your mastery over dependency injection, routing, and reactive programming with RxJS.</p>
+      <div class="meta-row">
+        <span><i class="far fa-clock"></i> 60 Mins</span>
+        <span><i class="fas fa-signal"></i> Advanced</span>
+      </div>
+      <a href="assets/Angular_Core.seb" class="btn-premium btn-primary full-width-btn">Launch Assessment</a>
+    </div>
+
+    <div class="validation-card premium-card">
+      <div class="card-badge purple">Deployment</div>
+      <h3>Flask API & Security</h3>
+      <p>Test your knowledge on securing endpoints, managing middleware, and database integrations.</p>
+      <div class="meta-row">
+        <span><i class="far fa-clock"></i> 30 Mins</span>
+        <span><i class="fas fa-signal"></i> Intermediate</span>
+      </div>
+      <a href="assets/Flask_Security.seb" class="btn-premium btn-primary full-width-btn">Launch Assessment</a>
+    </div>
+  </div>
+</div>

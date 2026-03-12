@@ -1,0 +1,16 @@
+✅ Database connected. Total students: 1859
+ * Serving Flask app 'server'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.31.109.66:5000
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+✅ Database connected. Total students: 1859
+ * Debugger is active!
+ * Debugger PIN: 394-380-839
+172.31.109.66 - - [11/Mar/2026 07:42:16] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Mar/2026 07:43:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [11/Mar/2026 07:43:36] "GET /static/images/trainhub_logo.png HTTP/1.1" 200 -
+127.0.0.1 - - [11/Mar/2026 07:43:36] "[36mGET /static/images/trainhub_logo.png HTTP/1.1[0m" 304 -

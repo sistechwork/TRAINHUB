@@ -1,0 +1,232 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo-area">
+      <img src="assets/images/trainhub_logo.png" alt="Logo" class="nav-logo">
+      <span class="brand-name">TrainHub Admin</span>
+    </div>
+    <div class="nav-actions">
+      <span class="user-badge"><i class="fas fa-user-shield"></i> Administrator</span>
+      <button (click)="logout()" class="btn-premium btn-secondary btn-sm">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="admin-container">
+  <header class="dashboard-header">
+    <div class="header-main">
+      <h1>Dashboard Overview</h1>
+      <p>Manage candidate records, monitor performance, and analyze statistics.</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-premium btn-primary" (click)="showAddCandidateModal()">
+        <i class="fas fa-user-plus"></i> Add Candidate
+      </button>
+      <button class="btn-premium btn-secondary" (click)="showBulkImportModal()">
+        <i class="fas fa-file-import"></i> Bulk Import
+      </button>
+      <button class="btn-premium btn-secondary" (click)="downloadCSV()">
+        <i class="fas fa-download"></i> Export Data
+      </button>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon blue"><i class="fas fa-users"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Total Students</span>
+        <span class="stat-value">{{ statistics.total }}</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green"><i class="fas fa-laptop-code"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">ML Domain</span>
+        <span class="stat-value">{{ statistics.ml }}</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon purple"><i class="fas fa-database"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">DS Domain</span>
+        <span class="stat-value">{{ statistics.ds }}</span>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon orange"><i class="fas fa-chart-line"></i></div>
+      <div class="stat-info">
+        <span class="stat-label">Avg Attendance</span>
+        <span class="stat-value">92%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="data-card">
+    <div class="filter-toolbar">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" [(ngModel)]="filters.search" (input)="applyFilters()" placeholder="Search by name, email, or phone..." class="premium-input">
+      </div>
+      <div class="filter-group">
+        <select [(ngModel)]="filters.domain" (change)="applyFilters()" class="premium-input select-input">
+          <option value="all">All Domains</option>
+          <option value="ML">Machine Learning</option>
+          <option value="DS">Data Science</option>
+          <option value="DA">Data Analytics</option>
+        </select>
+        <input type="text" [(ngModel)]="filters.batch" (input)="applyFilters()" placeholder="Filter by Batch" class="premium-input">
+        <button class="btn-premium btn-secondary" (click)="resetFilters()">Reset</button>
+      </div>
+    </div>
+
+    <div class="table-container">
+      <table class="premium-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Contact Information</th>
+            <th>Domain / Batch</th>
+            <th>Attendance</th>
+            <th>Marks</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let student of filteredStudents" (click)="editStudent(student.email)">
+            <td>
+              <div class="student-name-cell">
+                <span class="avatar">{{ student.name.charAt(0) }}</span>
+                <span class="name-text">{{ student.name }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="contact-cell">
+                <span class="email"><i class="far fa-envelope"></i> {{ student.email }}</span>
+                <span class="phone"><i class="fas fa-phone-alt"></i> {{ student.phone }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="domain-cell">
+                <span class="badge" [ngClass]="'badge-' + student.domain.toLowerCase()">{{ student.domain }}</span>
+                <span class="batch-text">Batch: {{ student.batch }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="attendance-cell">
+                <div class="progress-mini">
+                  <div class="progress-fill" [style.width]="(28/30*100) + '%'"></div>
+                </div>
+                <span class="attendance-text">28 / 30</span>
+              </div>
+            </td>
+            <td>
+              <span class="marks-text">{{ student.total_marks || '285' }}</span>
+            </td>
+            <td>
+              <button class="btn-icon" (click)="$event.stopPropagation(); editStudent(student.email)">
+                <i class="fas fa-edit"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Add Candidate Modal -->
+<div class="modal-overlay" *ngIf="showAddModal" (click)="hideModals()">
+  <div class="modal-card premium-card" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2><i class="fas fa-user-plus"></i> Add New Candidate</h2>
+      <button class="close-btn" (click)="hideModals()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form class="premium-form-grid">
+        <div class="form-section">
+          <h3><i class="fas fa-id-card"></i> Personal Details</h3>
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" class="premium-input" placeholder="e.g. Liam Johnson">
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" class="premium-input" placeholder="liam@example.com">
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" class="premium-input" placeholder="+1 234 567 890">
+            </div>
+            <div class="form-group">
+              <label>College Name</label>
+              <input type="text" class="premium-input" placeholder="e.g. MIT">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3><i class="fas fa-graduation-cap"></i> Academic Info</h3>
+          <div class="grid-2">
+            <div class="form-group">
+              <label>Department</label>
+              <input type="text" class="premium-input" placeholder="e.g. CSE">
+            </div>
+            <div class="form-group">
+              <label>Domain</label>
+              <select class="premium-input">
+                <option value="ML">Machine Learning</option>
+                <option value="DS">Data Science</option>
+                <option value="DA">Data Analytics</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Batch</label>
+              <input type="text" class="premium-input" placeholder="e.g. B1">
+            </div>
+            <div class="form-group">
+              <label>Mentor Name</label>
+              <input type="text" class="premium-input" placeholder="e.g. Dr. Smith">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-premium btn-secondary" (click)="hideModals()">Cancel</button>
+      <button class="btn-premium btn-primary">Save Candidate</button>
+    </div>
+  </div>
+</div>
+
+<!-- Bulk Import Modal -->
+<div class="modal-overlay" *ngIf="showImportModal" (click)="hideModals()">
+  <div class="modal-card import-modal premium-card" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2><i class="fas fa-file-import"></i> Bulk Import Students</h2>
+      <button class="close-btn" (click)="hideModals()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="upload-zone">
+        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+        <h3>Drag & Drop Files Here</h3>
+        <p>Support CSV or Excel (.xlsx) files with student data.</p>
+        <button class="btn-premium btn-primary">Choose Files</button>
+      </div>
+      <div class="import-help">
+        <h4><i class="fas fa-info-circle"></i> Instructions</h4>
+        <ul>
+          <li>The file must contain headers matching the database fields.</li>
+          <li>Duplicate emails will be skipped by default.</li>
+          <li>Ensure the date formats follow YYYY-MM-DD.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-premium btn-secondary" (click)="hideModals()">Close</button>
+      <button class="btn-premium btn-primary">Start Import</button>
+    </div>
+  </div>
+</div>

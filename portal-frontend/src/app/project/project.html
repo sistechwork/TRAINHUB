@@ -1,0 +1,75 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo-area">
+      <img src="assets/images/trainhub_logo.png" alt="Logo" class="nav-logo">
+      <span class="brand-name">TrainHub Student</span>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/details" routerLinkActive="active">My Profile</a>
+      <a routerLink="/hrm" routerLinkActive="active">Attendance</a>
+      <a routerLink="/learning" routerLinkActive="active">Learning</a>
+      <a routerLink="/validation" routerLinkActive="active">Assessment</a>
+      <a routerLink="/project" routerLinkActive="active">Projects</a>
+      <a routerLink="/setting" routerLinkActive="active">Settings</a>
+      <button class="btn-premium btn-secondary btn-sm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="student-container">
+  <header class="section-header">
+    <h1>Project Milestone</h1>
+    <p>Track your current assignment progress and submit deliverables.</p>
+  </header>
+
+  <div class="project-main premium-card">
+    <div class="project-header">
+      <div class="project-title-area">
+        <span class="project-id">#TH-2024-001</span>
+        <h2>Full-Stack E-Commerce Platform</h2>
+      </div>
+      <div class="project-status-badge">In Progress</div>
+    </div>
+
+    <div class="project-description">
+      <h3>Objectives</h3>
+      <p>Develop a robust e-commerce solution featuring a Flask backend, Angular frontend, and automated inventory management. Focus on high performance, secure transactions, and a responsive user experience.</p>
+    </div>
+
+    <div class="milestones-container">
+      <h3>Project Timeline</h3>
+      <div class="milestone-list">
+        <div class="milestone-item completed">
+          <div class="check"><i class="fas fa-check"></i></div>
+          <div class="m-info">
+            <span class="m-title">Database Design & Schema</span>
+            <span class="m-date">Completed Feb 15</span>
+          </div>
+        </div>
+        <div class="milestone-item active">
+          <div class="check">2</div>
+          <div class="m-info">
+            <span class="m-title">Backend API Implementation</span>
+            <span class="m-date">Target Date: Mar 10</span>
+          </div>
+        </div>
+        <div class="milestone-item pending">
+          <div class="check">3</div>
+          <div class="m-info">
+            <span class="m-title">Frontend Integration & Testing</span>
+            <span class="m-date">Upcoming</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="submission-area">
+      <h3>Submission Repository</h3>
+      <div class="github-input-group">
+        <i class="fab fa-github"></i>
+        <input type="text" placeholder="https://github.com/yourusername/project-repo" class="premium-input">
+        <button class="btn-premium btn-primary">Submit for Review</button>
+      </div>
+    </div>
+  </div>
+</div>

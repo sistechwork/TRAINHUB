@@ -1,0 +1,39 @@
+# Root .gitignore for TRAINHUB project
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# SQLite
+*.db
+!dataset.db # Keeping the database if it's the main dataset, but usually we exclude data
+# Actually, the user might want the DB. For now I'll ignore general DB files.
+
+# Node / Angular (Frontend)
+portal-frontend/node_modules/
+portal-frontend/dist/
+portal-frontend/tmp/
+portal-frontend/out-tsc/
+portal-frontend/bazel-out/
+portal-frontend/.angular/cache
+portal-frontend/npm-debug.log
+portal-frontend/yarn-error.log
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Gemini/Antigravity
+.gemini/
+.antigravity/
+brain/
+tmp/

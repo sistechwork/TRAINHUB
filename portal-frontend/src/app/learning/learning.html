@@ -1,0 +1,65 @@
+<nav class="navbar">
+  <div class="navbar-content">
+    <div class="logo-area">
+      <img src="assets/images/trainhub_logo.png" alt="Logo" class="nav-logo">
+      <span class="brand-name">TrainHub Student</span>
+    </div>
+    <div class="nav-links">
+      <a routerLink="/details" routerLinkActive="active">My Profile</a>
+      <a routerLink="/hrm" routerLinkActive="active">Attendance</a>
+      <a routerLink="/learning" routerLinkActive="active">Learning</a>
+      <a routerLink="/validation" routerLinkActive="active">Assessment</a>
+      <a routerLink="/project" routerLinkActive="active">Projects</a>
+      <a routerLink="/setting" routerLinkActive="active">Settings</a>
+      <button class="btn-premium btn-secondary btn-sm" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<div class="student-container">
+  <header class="section-header">
+    <h1>Learning Tracks</h1>
+    <p>Upskill yourself with our curated educational modules.</p>
+  </header>
+
+  <div class="learning-grid">
+    <div class="learning-card premium-card">
+      <div class="card-icon red"><i class="fab fa-python"></i></div>
+      <div class="card-body">
+        <h3>Backend Foundations</h3>
+        <p>Master Python, SQL, and API development with industry standards.</p>
+        <div class="tag-row">
+          <span class="tag">12 Modules</span>
+          <span class="tag">Advanced</span>
+        </div>
+      </div>
+      <button class="btn-premium btn-primary full-width-btn">Continue Track</button>
+    </div>
+
+    <div class="learning-card premium-card">
+      <div class="card-icon blue"><i class="fab fa-angular"></i></div>
+      <div class="card-body">
+        <h3>Angular Architecture</h3>
+        <p>Build scalable frontend apps using the latest Angular features.</p>
+        <div class="tag-row">
+          <span class="tag">8 Modules</span>
+          <span class="tag">Intermediate</span>
+        </div>
+      </div>
+      <button class="btn-premium btn-primary full-width-btn">Start Learning</button>
+    </div>
+
+    <div class="learning-card premium-card">
+      <div class="card-icon pink"><i class="fas fa-microchip"></i></div>
+      <div class="card-body">
+        <h3>Machine Learning</h3>
+        <p>From regression to deep learning. Hands-on modeling with datasets.</p>
+        <div class="tag-row">
+          <span class="tag">15 Modules</span>
+          <span class="tag">Expert</span>
+        </div>
+      </div>
+      <button class="btn-premium btn-primary full-width-btn">Explore Path</button>
+    </div>
+  </div>
+</div>
